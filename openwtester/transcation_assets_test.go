@@ -120,12 +120,21 @@ func testSubmitTransactionStep(tm *openw.WalletManager, rawTx *openwallet.RawTra
 func TestTransfer(t *testing.T) {
 
 	addrs := []string{
-		"XWCNUYPpgGXqeYUg4V99PoYCkWrGsBLDWRFHP",
+		"XWCNSb4UJUYEPrzxAfdVho4fjS4GY9FDANrZi",
+		"XWCNPFtc21VpmAykPZe8HKJxHCj5qiREugv5J",
+		"XWCNVqNUJ5uLnjhUKnRKc8Y7BdzijjREf11T6",
+		"XWCNURuJhywJYbxKger7CPUP1nRrHEbvrCDqQ",
+		"XWCNPiXvMRxD7Eo3N3b7Lp7ugnBTLomzgai66",
+		"XWCNSzK3xpgHuZajNEvybTZuu8SwhHHbUpBEj",
+		"XWCNPAddbUCG3GByMM587cHE35yq9okYatSnD",
+		"XWCNe73hZAjrj1Ncbw9i13ebjVDJXT5qTxFyZ",
+		"XWCNgqBqdR8dqnxhV9r7ET6LrxFq7sruCrRiR",
+		"XWCNWV7FaRKmGjwATVvJbFgECzGJd5KToZKET",
 	}
 
 	tm := testInitWalletManager()
 	walletID := "WCYrRzsTTEW5NcGMiPabgxbkyJ2PsQTkZm"
-	accountID := "EZRT13S5MNwZkw23YTovgJzqyHfoMFnPrKXncE5U82fs"
+	accountID := "8zpEMuVUuWN64WuCUQxd2b5LF7Yw9HnqTyg5FQVfogS"
 
 	contract := openwallet.SmartContract{
 		Address:  "1.3.0",
@@ -139,7 +148,7 @@ func TestTransfer(t *testing.T) {
 
 	for _, to := range addrs {
 
-		rawTx, err := testCreateTransactionStep(tm, walletID, accountID, to, "0.89999994", "", &contract)
+		rawTx, err := testCreateTransactionStep(tm, walletID, accountID, to, "0.17130892", "", &contract)
 		if err != nil {
 			return
 		}
@@ -163,15 +172,23 @@ func TestTransfer(t *testing.T) {
 
 func TestSummary(t *testing.T) {
 	tm := testInitWalletManager()
-	walletID := "WHTcRAtNHTL1j3A5WxK7Bnh4eXvXNs9AAZ"
-	accountID := "E1AGbRsvm5pxApE8VYbnrdkYh3fKxicxyb7Jqp69sNCx"
-	summaryAddress := "GJ2o7XyQbTYkXC3VmKfQoThZuAZqytZATj"
+	walletID := "WCYrRzsTTEW5NcGMiPabgxbkyJ2PsQTkZm"
+	accountID := "FVYVywDHSkze62CkeCxgLWd9eQiZM1XPn2XRdTBfZSGM"
+	summaryAddress := "XWCNUYPpgGXqeYUg4V99PoYCkWrGsBLDWRFHP"
 
-	testGetAssetsAccountBalance(tm, walletID, accountID)
+	contract := openwallet.SmartContract{
+		Address:  "1.3.0",
+		Symbol:   "XWC",
+		Name:     "XWC",
+		Token:    "XWC",
+		Decimals: 8,
+	}
+
+	testGetAssetsAccountTokenBalance(tm, walletID, accountID, contract)
 
 	rawTxArray, err := testCreateSummaryTransactionStep(tm, walletID, accountID,
 		summaryAddress, "", "", "",
-		0, 100, nil)
+		0, 100, &contract)
 	if err != nil {
 		log.Errorf("CreateSummaryTransaction failed, unexpected error: %v", err)
 		return

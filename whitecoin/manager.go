@@ -16,8 +16,10 @@
 package whitecoin
 
 import (
+	"fmt"
 	"github.com/blocktree/openwallet/log"
 	"github.com/blocktree/openwallet/openwallet"
+	bt "github.com/blocktree/whitecoin-adapter/libs/types"
 	"github.com/blocktree/whitecoin-adapter/whitecoin_addrdec"
 )
 
@@ -44,4 +46,25 @@ func NewWalletManager() *WalletManager {
 	wm.ContractDecoder = NewContractDecoder(&wm)
 	wm.Log = log.NewOWLogger(wm.Symbol())
 	return &wm
+}
+
+
+func (wm *WalletManager) GetRequiredFee(ops []bt.Operation, assetID string) ([]bt.AssetAmount, error) {
+	resp := make([]bt.AssetAmount, 0)
+
+	if assetID == "1.3.0" {
+		//XWC写死1.3.0
+		xwcFees := bt.AssetAmount{
+			Asset:  bt.AssetIDFromObject(bt.NewAssetID("1.3.0")),
+			Amount: bt.Int64(wm.Config.FixFees),
+		}
+
+		resp = append(resp, xwcFees)
+	}
+
+	if len(resp) == 0 {
+		return nil, fmt.Errorf("can not find required fee with asset ID: %s", assetID)
+	}
+
+	return resp, nil
 }

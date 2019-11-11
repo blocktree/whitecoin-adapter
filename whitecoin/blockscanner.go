@@ -435,7 +435,7 @@ func (bs *XWCBlockScanner) InitExtractResult(sourceKey string, operation *types.
 		TxType:      0,
 	}
 
-	transx.SetExtParam("memo", operation.Memo)
+	//transx.SetExtParam("memo", operation.Memo)
 
 	wxID := openwallet.GenTransactionWxID(transx)
 	transx.WxID = wxID

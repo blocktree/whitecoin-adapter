@@ -64,7 +64,7 @@ func TestWalletClient_GetAccounts(t *testing.T) {
 
 
 func TestWalletClient_GetAddrBalance(t *testing.T) {
-	balances, err := tw.Api.GetAddrBalance("XWCNXAnMmSrv8eAkEnXa9ARFzpQJUzz8UDyWF", types.MustParseObjectID("1.3.0"))
+	balances, err := tw.Api.GetAddrBalance("XWCNYLeuLTsX5ynsYx329F4BFGbL2zNxWWdVk", types.MustParseObjectID("1.3.0"))
 	if err != nil {
 		t.Errorf("Balances failed unexpected error: %v\n", err)
 	} else {

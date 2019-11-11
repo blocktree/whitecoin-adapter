@@ -59,8 +59,8 @@ func TestSubscribeAddress(t *testing.T) {
 		endRunning = make(chan bool, 1)
 		symbol     = "XWC"
 		addrs      = map[string]string{
-			"XWCNiJGnNVZDkQyHBahwh1EzuEVn2JmRZpEjE": "sender",
-			"XWCNMwNjKNQvFYPNs7xhmF2BpDFdn94QN7uaE": "receiver",
+			"XWCNe73hZAjrj1Ncbw9i13ebjVDJXT5qTxFyZ": "sender",
+			"XWCNUYPpgGXqeYUg4V99PoYCkWrGsBLDWRFHP": "receiver",
 		}
 	)
 
@@ -107,7 +107,7 @@ func TestSubscribeAddress(t *testing.T) {
 		scanner.SetBlockchainDAI(dai)
 	}
 
-	scanner.SetRescanBlockHeight(578352)
+	scanner.SetRescanBlockHeight(614767)
 
 	if scanner == nil {
 		log.Error(symbol, "is not support block scan")

@@ -67,6 +67,7 @@ func (wm *WalletManager) LoadAssetsConfig(c config.Configer) error {
 
 	wm.Config.ServerAPI = c.String("serverAPI")
 	wm.Config.ChainID = c.String("ChainID")
+	wm.Config.FixFees, _ = c.Int64("FixFees")
 	wm.Api = NewWalletClient(wm.Config.ServerAPI, wm.Config.ServerAPI, false)
 	wm.Config.DataDir = c.String("dataDir")
 

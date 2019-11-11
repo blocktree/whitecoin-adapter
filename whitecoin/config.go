@@ -54,6 +54,8 @@ type WalletConfig struct {
 	DataDir string
 	//chain id
 	ChainID string
+	//Fix XWC Required Fee
+	FixFees int64
 }
 
 func NewConfig(symbol string) *WalletConfig {

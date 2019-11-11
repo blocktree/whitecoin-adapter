@@ -167,10 +167,16 @@ func (c *WalletClient) GetTransaction(txid string) (*types.Transaction, error) {
 
 // GetAddrBalance Returns information about the given account.
 func (c *WalletClient) GetAddrBalance(addr string, asset types.ObjectID) (*Balance, error) {
+
+	balance := &Balance{
+		AssetID: asset,
+		Amount:  "0",
+	}
+
 	//var resp []*types.Account
 	r, err := c.call("get_addr_balances", []interface{}{addr, []interface{}{asset.String()}}, false)
 	if err != nil {
-		return nil, err
+		return balance, nil
 	}
 
 	if r.IsArray() {
@@ -183,7 +189,7 @@ func (c *WalletClient) GetAddrBalance(addr string, asset types.ObjectID) (*Balan
 		}
 	}
 
-	return nil, fmt.Errorf("assets can not find")
+	return balance, nil
 }
 
 // GetAssetsBalance Returns information about the given account.
@@ -241,25 +247,6 @@ func (c *WalletClient) GetAccounts(names_or_ids ...string) ([]*types.Account, er
 //	return resp, nil
 //}
 
-func (c *WalletClient) GetRequiredFee(ops []bt.Operation, assetID string) ([]bt.AssetAmount, error) {
-	resp := make([]bt.AssetAmount, 0)
-
-	if assetID == "1.3.0" {
-		//XWC写死1.3.0
-		xwcFees := bt.AssetAmount{
-			Asset:  bt.AssetIDFromObject(bt.NewAssetID("1.3.0")),
-			Amount: bt.Int64(100000),
-		}
-
-		resp = append(resp, xwcFees)
-	}
-
-	if len(resp) == 0 {
-		return nil, fmt.Errorf("can not find required fee with asset ID: %s", assetID)
-	}
-
-	return resp, nil
-}
 
 // BroadcastTransaction broadcast a transaction
 func (c *WalletClient) BroadcastTransaction(tx *bt.SignedTransaction) (string, error) {
