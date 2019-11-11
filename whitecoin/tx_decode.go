@@ -190,14 +190,14 @@ func (decoder *TransactionDecoder) SignRawTransaction(wrapper openwallet.WalletD
 				return err
 			}
 
-			decoder.wm.Log.Debug("privateKey:", hex.EncodeToString(keyBytes))
+			//decoder.wm.Log.Debug("privateKey:", hex.EncodeToString(keyBytes))
 
 			hash, err := hex.DecodeString(keySignature.Message)
 			if err != nil {
 				return fmt.Errorf("decoder transaction hash failed, unexpected err: %v", err)
 			}
 
-			decoder.wm.Log.Debug("hash:", hash)
+			//decoder.wm.Log.Debug("hash:", hash)
 
 			sig, err := bts_txsigner.Default.SignTransactionHash(hash, keyBytes, decoder.wm.CurveType())
 			if err != nil {
@@ -242,7 +242,7 @@ func (decoder *TransactionDecoder) VerifyRawTransaction(wrapper openwallet.Walle
 			signature, _ := hex.DecodeString(keySignature.Signature)
 			publicKey, _ := hex.DecodeString(keySignature.Address.PublicKey)
 
-			decoder.wm.Log.Debug("publicKey:", keySignature.Address.PublicKey)
+			//decoder.wm.Log.Debug("publicKey:", keySignature.Address.PublicKey)
 
 			//验证签名，解压公钥，解压后首字节04要去掉
 			uncompessedPublicKey := owcrypt.PointDecompress(publicKey, decoder.wm.CurveType())

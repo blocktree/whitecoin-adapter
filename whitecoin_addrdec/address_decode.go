@@ -1,13 +1,10 @@
 package whitecoin_addrdec
 
 import (
-	"encoding/hex"
 	"github.com/blocktree/go-owaddress"
 	"github.com/blocktree/go-owcdrivers/addressEncoder"
 	"github.com/blocktree/go-owcrypt"
-	"github.com/blocktree/openwallet/log"
 	"github.com/blocktree/openwallet/openwallet"
-	"github.com/mr-tron/base58"
 )
 
 var (
@@ -54,8 +51,8 @@ func (dec *AddressDecoderV2) AddressDecode(addr string, opts ...interface{}) ([]
 	}
 
 	base := addr[len(addreesPrefix):]
-	hash, _ := base58.Decode(base)
-	log.Infof("hash: %s", hex.EncodeToString(hash))
+	//hash, _ := base58.Decode(base)
+	//log.Infof("hash: %s", hex.EncodeToString(hash))
 	return addressEncoder.AddressDecode(base, cfg)
 }
 

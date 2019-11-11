@@ -122,14 +122,14 @@ func (p PrivateKey) SharedSecret(pub *PublicKey, skLen, macLen int) (sk []byte, 
 	if skLen+macLen > pub.MaxSharedKeyLength() {
 		return nil, ErrSharedKeyTooBig
 	}
-	fmt.Printf("puk.X = %s\n", hex.EncodeToString(puk.X.Bytes()))
-	fmt.Printf("puk.Y = %s\n", hex.EncodeToString(puk.Y.Bytes()))
-	fmt.Printf("pvk.D = %s\n", hex.EncodeToString(pvk.D.Bytes()))
+	//fmt.Printf("puk.X = %s\n", hex.EncodeToString(puk.X.Bytes()))
+	//fmt.Printf("puk.Y = %s\n", hex.EncodeToString(puk.Y.Bytes()))
+	//fmt.Printf("pvk.D = %s\n", hex.EncodeToString(pvk.D.Bytes()))
 	x, _ := puk.Curve.ScalarMult(puk.X, puk.Y, pvk.D.Bytes())
 	if x == nil {
 		return nil, ErrSharedKeyIsPointAtInfinity
 	}
-	fmt.Printf("x = %s\n", hex.EncodeToString(x.Bytes()))
+	//fmt.Printf("x = %s\n", hex.EncodeToString(x.Bytes()))
 	sk = make([]byte, skLen+macLen)
 	skBytes := x.Bytes()
 	copy(sk[len(sk)-len(skBytes):], skBytes)

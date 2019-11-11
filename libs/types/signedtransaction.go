@@ -102,7 +102,7 @@ func (tx SignedTransaction) Digest(chain *config.ChainConfig) ([]byte, error) {
 	}
 
 	rawTrx, err := tx.SerializeTrx()
-	fmt.Printf("rawTrx: %s \n", hex.EncodeToString(rawTrx))
+	//fmt.Printf("rawTrx: %s \n", hex.EncodeToString(rawTrx))
 	if err != nil {
 		return nil, errors.Annotatef(err, "Serialize")
 	}
