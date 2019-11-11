@@ -4,6 +4,7 @@ go 1.12
 
 require (
 	github.com/astaxie/beego v1.12.0
+	github.com/blocktree/bitshares-adapter v1.0.5
 	github.com/blocktree/go-owaddress v1.0.4
 	github.com/blocktree/go-owcdrivers v1.1.21
 	github.com/blocktree/go-owcrypt v1.0.4
@@ -22,6 +23,7 @@ require (
 	github.com/stretchr/testify v1.4.0
 	github.com/tidwall/gjson v1.3.4
 	golang.org/x/crypto v0.0.0-20190701094942-4def268fd1a4
+
 )
 
 replace github.com/imroc/req => github.com/blocktree/req v0.2.5

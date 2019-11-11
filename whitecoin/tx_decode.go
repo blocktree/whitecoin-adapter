@@ -23,11 +23,11 @@ import (
 	"github.com/blocktree/whitecoin-adapter/libs/operations"
 	"time"
 
+	bts_txsigner "github.com/blocktree/bitshares-adapter/txsigner"
 	"github.com/blocktree/whitecoin-adapter/libs/config"
 	"github.com/blocktree/whitecoin-adapter/libs/crypto"
 	bt "github.com/blocktree/whitecoin-adapter/libs/types"
 	"github.com/blocktree/whitecoin-adapter/types"
-	"github.com/blocktree/whitecoin-adapter/whitecoin_txsigner"
 
 	owcrypt "github.com/blocktree/go-owcrypt"
 	"github.com/blocktree/openwallet/openwallet"
@@ -199,7 +199,7 @@ func (decoder *TransactionDecoder) SignRawTransaction(wrapper openwallet.WalletD
 
 			decoder.wm.Log.Debug("hash:", hash)
 
-			sig, err := whitecoin_txsigner.Default.SignTransactionHash(hash, keyBytes, decoder.wm.CurveType())
+			sig, err := bts_txsigner.Default.SignTransactionHash(hash, keyBytes, decoder.wm.CurveType())
 			if err != nil {
 				return fmt.Errorf("sign transaction hash failed, unexpected err: %v", err)
 			}
@@ -247,7 +247,7 @@ func (decoder *TransactionDecoder) VerifyRawTransaction(wrapper openwallet.Walle
 			//验证签名，解压公钥，解压后首字节04要去掉
 			uncompessedPublicKey := owcrypt.PointDecompress(publicKey, decoder.wm.CurveType())
 
-			valid, compactSig, err := whitecoin_txsigner.Default.VerifyAndCombineSignature(messsage, uncompessedPublicKey[1:], signature)
+			valid, compactSig, err := bts_txsigner.Default.VerifyAndCombineSignature(messsage, uncompessedPublicKey[1:], signature)
 			if !valid {
 				return fmt.Errorf("transaction verify failed: %v", err)
 			}
