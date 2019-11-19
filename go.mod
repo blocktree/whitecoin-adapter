@@ -8,7 +8,7 @@ require (
 	github.com/blocktree/go-owaddress v1.0.5
 	github.com/blocktree/go-owcdrivers v1.1.21
 	github.com/blocktree/go-owcrypt v1.0.4
-	github.com/blocktree/openwallet v1.5.4
+	github.com/blocktree/openwallet v1.5.5
 	github.com/btcsuite/btcd v0.0.0-20190315201642-aa6e0f35703c
 	github.com/btcsuite/btcutil v0.0.0-20190316010144-3ac1210f4b38
 	github.com/denkhaus/logging v0.0.0-20180714213349-14bfb935047c
