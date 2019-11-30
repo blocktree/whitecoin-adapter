@@ -86,6 +86,7 @@ func (bs *XWCBlockScanner) GetLocalBlock(height uint32) (*Block, error) {
 	block := &Block{
 		BlockID: header.Hash,
 		Height:  header.Height,
+		Previous: header.Previousblockhash,
 	}
 
 	return block, nil

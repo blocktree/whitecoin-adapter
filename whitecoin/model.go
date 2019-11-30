@@ -158,7 +158,7 @@ func ParseHeader(b *Block) *openwallet.BlockHeader {
 	obj.Hash = b.BlockID
 	obj.Previousblockhash = b.Previous
 	obj.Height = b.Height
-	obj.Time = uint64(b.Timestamp.Unix())
+	//obj.Time = uint64(b.Timestamp.Unix())
 	obj.Symbol = Symbol
 	return &obj
 }
