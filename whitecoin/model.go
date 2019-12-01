@@ -11,7 +11,7 @@
 * but WITHOUT ANY WARRANTY; without even the implied warranty of
 * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 * GNU Lesser General Public License for more details.
-*/
+ */
 
 package whitecoin
 
@@ -106,7 +106,7 @@ func (block *BlockHeader) Marshal(encoder *encoding.Encoder) error {
 }
 
 type Block struct {
-	Height                uint64
+	Height                uint64               `json:"number"`
 	BlockID               string               `json:"block_id"`
 	TransactionMerkleRoot string               `json:"transaction_merkle_root"`
 	Previous              string               `json:"previous"`
@@ -120,6 +120,30 @@ type Block struct {
 
 func NewBlock(height uint32, result *gjson.Result) *Block {
 	obj := Block{}
+	//obj.Height = result.Get("number").Uint()
+	//obj.BlockID = result.Get("block_id").String()
+	//obj.TransactionMerkleRoot = result.Get("transaction_merkle_root").String()
+	//obj.Previous = result.Get("previous").String()
+	//timestamp, _ := time.ParseInLocation(TimeLayout, result.Get("timestamp").String(), time.UTC)
+	//obj.Timestamp = types.Time{&timestamp}
+	//obj.Witness = result.Get("witness").String()
+	//obj.WitnessSignature = result.Get("witness_signature").String()
+	//
+	//obj.Transactions = make([]*types.Transaction, 0)
+	//if result.Get("transactions").IsArray() && result.Get("transaction_ids").IsArray() {
+	//	ids := result.Get("transaction_ids").Array()
+	//	for i, txRaw := range result.Get("transactions").Array() {
+	//		txid := ids[i].String()
+	//		tx, _ := NewTransaction(&txRaw, txid)
+	//		//if err != nil {
+	//		//	log.Errorf("NewTransaction error: %v", err)
+	//		//} else {
+	//		//	obj.Transactions = append(obj.Transactions, tx)
+	//		//}
+	//		obj.Transactions = append(obj.Transactions, tx)
+	//	}
+	//}
+
 	json.Unmarshal([]byte(result.Raw), &obj)
 	obj.Height = uint64(height)
 	return &obj
