@@ -119,8 +119,8 @@ func TestWalletManager_GetAssetsAccountBalance(t *testing.T) {
 func TestWalletManager_GetAssetsAccountTokenBalance(t *testing.T) {
 	tm := testInitWalletManager()
 	walletID := "WCYrRzsTTEW5NcGMiPabgxbkyJ2PsQTkZm"
-	//accountID := "8zpEMuVUuWN64WuCUQxd2b5LF7Yw9HnqTyg5FQVfogS"
-	accountID := "FVYVywDHSkze62CkeCxgLWd9eQiZM1XPn2XRdTBfZSGM"
+	accountID := "8zpEMuVUuWN64WuCUQxd2b5LF7Yw9HnqTyg5FQVfogS"
+	//accountID := "FVYVywDHSkze62CkeCxgLWd9eQiZM1XPn2XRdTBfZSGM"
 
 	contract := openwallet.SmartContract{
 		Address:  "1.3.0",

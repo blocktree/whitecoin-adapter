@@ -120,7 +120,7 @@ func testSubmitTransactionStep(tm *openw.WalletManager, rawTx *openwallet.RawTra
 func TestTransfer(t *testing.T) {
 
 	addrs := []string{
-		//"XWCNSb4UJUYEPrzxAfdVho4fjS4GY9FDANrZi",
+		"XWCNSb4UJUYEPrzxAfdVho4fjS4GY9FDANrZi",
 		//"XWCNPFtc21VpmAykPZe8HKJxHCj5qiREugv5J",
 		//"XWCNVqNUJ5uLnjhUKnRKc8Y7BdzijjREf11T6",
 		//"XWCNURuJhywJYbxKger7CPUP1nRrHEbvrCDqQ",
@@ -131,7 +131,7 @@ func TestTransfer(t *testing.T) {
 		//"XWCNgqBqdR8dqnxhV9r7ET6LrxFq7sruCrRiR",
 		//"XWCNWV7FaRKmGjwATVvJbFgECzGJd5KToZKET",
 
-		"XWCNeVn7JSzGQwK1GGMgbk2V3jCbc6x1p7ZAo",
+		//"XWCNeVn7JSzGQwK1GGMgbk2V3jCbc6x1p7ZAo",
 	}
 
 	tm := testInitWalletManager()
