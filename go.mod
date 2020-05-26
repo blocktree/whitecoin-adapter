@@ -4,10 +4,10 @@ go 1.12
 
 require (
 	github.com/astaxie/beego v1.12.0
-	github.com/blocktree/go-owaddress v1.1.0
+	github.com/blocktree/go-owaddress v1.1.11
 	github.com/blocktree/go-owcdrivers v1.2.0
 	github.com/blocktree/go-owcrypt v1.1.1
-	github.com/blocktree/openwallet v1.7.0
+	github.com/blocktree/openwallet/v2 v2.0.4
 	github.com/btcsuite/btcd v0.20.1-beta
 	github.com/btcsuite/btcutil v0.0.0-20191219182022-e17c9730c422
 	github.com/denkhaus/logging v0.0.0-20180714213349-14bfb935047c

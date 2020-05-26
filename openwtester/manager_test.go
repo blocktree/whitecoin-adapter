@@ -2,9 +2,9 @@ package openwtester
 
 import (
 	"fmt"
-	"github.com/blocktree/openwallet/log"
-	"github.com/blocktree/openwallet/openw"
-	"github.com/blocktree/openwallet/openwallet"
+	"github.com/blocktree/openwallet/v2/log"
+	"github.com/blocktree/openwallet/v2/openw"
+	"github.com/blocktree/openwallet/v2/openwallet"
 	"path/filepath"
 	"testing"
 )
@@ -12,8 +12,8 @@ import (
 var (
 	testApp        = "assets-adapter"
 	configFilePath = filepath.Join("conf")
-	dbFilePath = filepath.Join("data", "db")
-	dbFileName = "blockchain-XWC.db"
+	dbFilePath     = filepath.Join("data", "db")
+	dbFileName     = "blockchain-XWC.db"
 )
 
 func testInitWalletManager() *openw.WalletManager {
@@ -142,8 +142,8 @@ func TestWalletManager_GetAddressList(t *testing.T) {
 		return
 	}
 	for _, w := range list {
-		fmt.Printf("address: %s\n", w.Address)
-		fmt.Printf("pub: %s\n", w.PublicKey)
+		fmt.Printf("%s\n", w.Address)
+		//fmt.Printf("pub: %s\n", w.PublicKey)
 	}
 	log.Info("address count:", len(list))
 

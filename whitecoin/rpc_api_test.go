@@ -4,7 +4,7 @@ import (
 	"github.com/blocktree/whitecoin-adapter/types"
 	"testing"
 
-	"github.com/blocktree/openwallet/log"
+	"github.com/blocktree/openwallet/v2/log"
 )
 
 func TestWalletClient_GetBlockchainInfo(t *testing.T) {
@@ -62,9 +62,8 @@ func TestWalletClient_GetAccounts(t *testing.T) {
 	}
 }
 
-
 func TestWalletClient_GetAddrBalance(t *testing.T) {
-	balances, err := tw.Api.GetAddrBalance("XWCNYLeuLTsX5ynsYx329F4BFGbL2zNxWWdVk", types.MustParseObjectID("1.3.0"))
+	balances, err := tw.Api.GetAddrBalance("", types.MustParseObjectID("1.3.0"))
 	if err != nil {
 		t.Errorf("Balances failed unexpected error: %v\n", err)
 	} else {

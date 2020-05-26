@@ -17,8 +17,8 @@ package whitecoin
 
 import (
 	"github.com/astaxie/beego/config"
-	"github.com/blocktree/openwallet/log"
-	"github.com/blocktree/openwallet/openwallet"
+	"github.com/blocktree/openwallet/v2/log"
+	"github.com/blocktree/openwallet/v2/openwallet"
 	xwc "github.com/blocktree/whitecoin-adapter/libs/config"
 )
 

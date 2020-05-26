@@ -9,7 +9,7 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/blocktree/openwallet/log"
+	"github.com/blocktree/openwallet/v2/log"
 	bt "github.com/blocktree/whitecoin-adapter/libs/types"
 	"github.com/imroc/req"
 	"github.com/tidwall/gjson"
@@ -246,7 +246,6 @@ func (c *WalletClient) GetAccounts(names_or_ids ...string) ([]*types.Account, er
 //
 //	return resp, nil
 //}
-
 
 // BroadcastTransaction broadcast a transaction
 func (c *WalletClient) BroadcastTransaction(tx *bt.SignedTransaction) (string, error) {

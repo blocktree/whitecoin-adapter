@@ -19,7 +19,7 @@ import (
 	"encoding/hex"
 	"encoding/json"
 	"fmt"
-	"github.com/blocktree/openwallet/log"
+	"github.com/blocktree/openwallet/v2/log"
 	"github.com/blocktree/whitecoin-adapter/libs/operations"
 	"time"
 
@@ -29,7 +29,7 @@ import (
 	"github.com/blocktree/whitecoin-adapter/types"
 
 	owcrypt "github.com/blocktree/go-owcrypt"
-	"github.com/blocktree/openwallet/openwallet"
+	"github.com/blocktree/openwallet/v2/openwallet"
 	"github.com/shopspring/decimal"
 )
 
@@ -256,7 +256,7 @@ func (decoder *TransactionDecoder) VerifyRawTransaction(wrapper openwallet.Walle
 
 			//验签通过后处理V值，符合节点验签
 			compactSig := signature[:len(signature)-1]
-			compactSig = append([]byte{v+27+4}, compactSig...)
+			compactSig = append([]byte{v + 27 + 4}, compactSig...)
 
 			tx.Signatures = append(
 				tx.Signatures,
@@ -370,7 +370,7 @@ func (decoder *TransactionDecoder) CreateSummaryRawTransactionWithError(wrapper 
 	}
 
 	//获取wallet
-	addresses, err := wrapper.GetAddressList(0, -1, "AccountID", accountID) //wrapper.GetWallet().GetAddressesByAccount(rawTx.Account.AccountID)
+	addresses, err := wrapper.GetAddressList(sumRawTx.AddressStartIndex, sumRawTx.AddressLimit, "AccountID", accountID) //wrapper.GetWallet().GetAddressesByAccount(rawTx.Account.AccountID)
 	if err != nil {
 		return nil, err
 	}

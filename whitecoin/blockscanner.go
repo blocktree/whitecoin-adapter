@@ -17,9 +17,9 @@ package whitecoin
 
 import (
 	"fmt"
-	"github.com/blocktree/openwallet/common"
-	"github.com/blocktree/openwallet/log"
-	"github.com/blocktree/openwallet/openwallet"
+	"github.com/blocktree/openwallet/v2/common"
+	"github.com/blocktree/openwallet/v2/log"
+	"github.com/blocktree/openwallet/v2/openwallet"
 	"github.com/blocktree/whitecoin-adapter/types"
 	"math/big"
 	"time"

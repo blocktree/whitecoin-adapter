@@ -17,7 +17,7 @@ package whitecoin
 
 import (
 	"fmt"
-	"github.com/blocktree/openwallet/openwallet"
+	"github.com/blocktree/openwallet/v2/openwallet"
 )
 
 //SaveLocalBlockHead 记录区块高度和hash到本地
@@ -84,8 +84,8 @@ func (bs *XWCBlockScanner) GetLocalBlock(height uint32) (*Block, error) {
 	}
 
 	block := &Block{
-		BlockID: header.Hash,
-		Height:  header.Height,
+		BlockID:  header.Hash,
+		Height:   header.Height,
 		Previous: header.Previousblockhash,
 	}
 
