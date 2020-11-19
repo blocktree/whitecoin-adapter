@@ -19,9 +19,10 @@ import (
 	"encoding/hex"
 	"encoding/json"
 	"fmt"
+	"time"
+
 	"github.com/blocktree/openwallet/v2/log"
 	"github.com/blocktree/whitecoin-adapter/libs/operations"
-	"time"
 
 	"github.com/blocktree/whitecoin-adapter/libs/config"
 	"github.com/blocktree/whitecoin-adapter/libs/crypto"
@@ -525,10 +526,14 @@ func (decoder *TransactionDecoder) createRawTransaction(
 	j, _ := json.Marshal(info.HeadBlockID)
 	headBlockID := bt.String{}
 	headBlockID.UnmarshalJSON(j)
+	t := bt.Time{}
+	t.FromTime(info.Timestamp)
+
 	props := &bt.DynamicGlobalProperties{
 		HeadBlockID:              headBlockID,
 		HeadBlockNumber:          bt.UInt32(info.HeadBlockNum),
 		LastIrreversibleBlockNum: bt.UInt32(info.LastIrreversibleBlockNum),
+		Time:                     t,
 	}
 
 	tx, err := bt.NewSignedTransactionWithBlockData(props)
