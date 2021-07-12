@@ -4,10 +4,11 @@ import (
 	"bytes"
 	"encoding/json"
 	"fmt"
-	"github.com/blocktree/whitecoin-adapter/types"
 	"io/ioutil"
 	"net/http"
 	"strings"
+
+	"github.com/blocktree/whitecoin-adapter/types"
 
 	"github.com/blocktree/openwallet/v2/log"
 	bt "github.com/blocktree/whitecoin-adapter/libs/types"
@@ -176,7 +177,7 @@ func (c *WalletClient) GetAddrBalance(addr string, asset types.ObjectID) (*Balan
 	//var resp []*types.Account
 	r, err := c.call("get_addr_balances", []interface{}{addr, []interface{}{asset.String()}}, false)
 	if err != nil {
-		return balance, nil
+		return nil, err
 	}
 
 	if r.IsArray() {
