@@ -19,7 +19,7 @@ require (
 	github.com/shopspring/decimal v0.0.0-20200105231215-408a2507e114
 	github.com/stretchr/testify v1.4.0
 	github.com/tidwall/gjson v1.3.5
-	golang.org/x/crypto v0.0.0-20191227163750-53104e6ec876
+	golang.org/x/crypto v0.1.0
 
 )
 
